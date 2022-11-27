@@ -2,6 +2,7 @@ const oldText = document.getElementById('old');
 const newText = document.getElementById('new');
 const btnCheck = document.getElementById('btn-check');
 const btnsave = document.getElementById('btn-save');
+const btnalert = document.getElementById('alert-btn');
 const newresultText = document.getElementById('newresult');
 const oldresultText = document.getElementById('oldresult');
 const hintText = document.getElementById('hint');
@@ -64,6 +65,12 @@ btnCheck.addEventListener('click', () => {
 });
 
 btnsave.onclick = save;
+if (!navigator.cookieEnabled) {
+    document.querySelector(".alert").style.display = "flex";
+}
+btnalert.onclick = () => {
+    document.querySelector(".alert").style.display = "none";
+ };
 
 function save() {
     const oldTextValue = String(oldText.value).trim();

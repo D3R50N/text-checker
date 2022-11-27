@@ -4,6 +4,7 @@
 
 .container {
     display: flex;
+    justify-content: center;
 }
 
 .content {
@@ -74,7 +75,8 @@ button {
 #btn-check {
     background-color: #16161D;
     color: white;
-    width: 20%;
+    min-width: 20%;
+
 
 }
 
@@ -129,5 +131,37 @@ footer img {
 
 footer a {
     text-decoration: none;
+    color: white;
+}
+
+.alert {
+    position: absolute;
+    margin: auto;
+    bottom: 70px;
+    z-index: 100000;
+    background-color: white;
+    border: 1px solid;
+    border-radius: 4px;
+    height: 50px;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    display: none;
+    min-width: 50%;
+    /* box-shadow: 2px -2px 1px #0003; */
+}
+
+#alert-text {
+    font-weight: 700;
+    margin-left: 10px;
+}
+
+#alert-btn {
+    margin-left: auto;
+    width: 30%;
+    margin: 5px;
+    font-weight: lighter;
+    background-color: #16161D;
     color: white;
 }
