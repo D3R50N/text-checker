@@ -1,6 +1,7 @@
 const oldText = document.getElementById('old');
 const newText = document.getElementById('new');
 const btnCheck = document.getElementById('btn-check');
+const btnsave = document.getElementById('btn-save');
 const newresultText = document.getElementById('newresult');
 const oldresultText = document.getElementById('oldresult');
 const hintText = document.getElementById('hint');
@@ -21,6 +22,7 @@ btnCheck.addEventListener('click', () => {
 
         return;
     }
+
 
     const result = checkAdded(oldTextValue, newTextValue);
     const removedresult = checkRemoved(oldTextValue, newTextValue);
@@ -61,6 +63,33 @@ btnCheck.addEventListener('click', () => {
     btnCheck.innerText = "Return back";
 });
 
+btnsave.onclick = save;
+
+function save() {
+    const oldTextValue = String(oldText.value).trim();
+    const newTextValue = String(newText.value).trim();
+
+    var form = document.createElement("form");
+    form.setAttribute("method", "post");
+    form.setAttribute("action", "/");
+    form.setAttribute("id", "form");
+
+    var inpt1 = document.createElement("input");
+    inpt1.setAttribute("type", "hidden");
+    inpt1.setAttribute("name", "oldTextValue");
+    inpt1.value = oldTextValue;
+
+    var inpt2 = document.createElement("input");
+    inpt2.setAttribute("type", "hidden");
+    inpt2.setAttribute("name", "newTextValue");
+    inpt2.value = newTextValue;
+
+    form.appendChild(inpt1);
+    form.appendChild(inpt2);
+    document.body.appendChild(form);
+    form.submit();
+}
+
 function checkAdded(oldText = "", newText = "") {
     const oldTextArray = splitter(oldText);
     const newTextArray = splitter(newText);
@@ -82,7 +111,6 @@ function checkRemoved(oldText = "", newText = "") {
     const oldTextArray = splitter(oldText);
     const newTextArray = splitter(newText);
     const indexes = [];
-    console.log(oldTextArray);  
     const oldresult = oldTextArray.filter((word, index) => {
         if (newTextArray.indexOf(word) === -1) {
             indexes.push(index);
