@@ -1,0 +1,89 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    display: flex;
+}
+
+.content {
+    background-color: #0002;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    margin: 10px;
+    width: 50%;
+}
+
+.content label {
+    font-weight: bold;
+    margin: 4px;
+    display: block;
+    text-align: center;
+}
+
+.content div {
+    margin: 5px;
+    display: block;
+    position: relative;
+
+    width: 97%;
+    height: 400px;
+}
+
+.content div>div {
+    cursor: not-allowed;
+}
+
+.content textarea, .content div>div {
+    width: 97%;
+    height: 400px;
+    font-size: 15px;
+    background-color: white;
+    border: 1px solid;
+    padding: 5px;
+    text-align: justify;
+}
+
+/* .content p {
+    background-color: white;
+    border: 1px solid;
+    height: 400px;
+    position: relative;
+    width: 97%;
+    margin: auto;
+} */
+
+button {
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.wrapper {
+    text-align: center;
+}
+
+#btn-check {
+    background-color: #16161D;
+    color: white;
+    font-weight: bold;
+    width: 30%;
+    font-size: larger;
+    padding: 1%;
+    transition-duration: .1s;
+}
+
+#btn-check:hover {
+    background-color: #18182D;
+    transform: scale(0.98);
+}
+
+
+.added {
+    background-color: lightgreen;
+}
+
+.removed {
+    background-color: lightcoral;
+}
