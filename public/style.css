@@ -2,6 +2,17 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+::-moz-selection {
+    /* Code for Firefox */
+    color: white;
+    background: #16161D;
+}
+
+::selection {
+    color: white;
+    background: #16161D;
+}
+
 .container {
     display: flex;
     justify-content: center;
