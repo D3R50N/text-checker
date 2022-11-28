@@ -10,6 +10,8 @@ const PORT = process.env.PORT || 1234;
 
 const crypto = require('crypto');
 var views = 0;
+var now = new Date();
+var update_date = now.getDate() + "/" + now.getMonth()+"/"+now.getFullYear()+" at "+now.getHours()+":"+now.getMinutes();
 // log(crypto.randomUUID())
 
 app.use(bodyParser.json());
@@ -24,7 +26,7 @@ app.listen(PORT, () => {
 
 app.get("/", (req, res) => {
     views++;
-    res.render("index", { oldText: jwt.decode(req.cookies.oldText) || "", newText: jwt.decode(req.cookies.newText) || "", views });
+    res.render("index", { oldText: jwt.decode(req.cookies.oldText) || "", newText: jwt.decode(req.cookies.newText) || "", views, update_date });
 
 });
 
