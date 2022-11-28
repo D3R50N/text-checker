@@ -29,6 +29,8 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", (req, res) => {
+    res.redirect("back");
+
     let oldText = req.body.oldTextValue;
     let newText = req.body.newTextValue;
 try{
