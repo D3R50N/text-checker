@@ -10,6 +10,10 @@ const hintText = document.getElementById('hint');
 const oct = document.getElementById('oct');
 const nct = document.getElementById('nct');
 
+oldText.innerHTML= localStorage.getItem("oldText");
+newText.innerHTML= localStorage.getItem("newText");
+
+
 oct.innerText = oldText.value.trim() == "" ? 0: oldText.value.trim().split(" ").length;
 nct.innerText = newText.value.trim() == "" ? 0 : newText.value.trim().split(" ").length;
 
@@ -91,6 +95,10 @@ function save() {
     const oldTextValue = String(oldText.value).trim();
     const newTextValue = String(newText.value).trim();
 
+    localStorage.setItem("oldText", oldTextValue);
+    localStorage.setItem("newText", newTextValue);
+    alert("Saved");
+    return;
     var form = document.createElement("form");
     form.setAttribute("method", "post");
     form.setAttribute("action", "/");
