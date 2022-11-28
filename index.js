@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const { log } = require("console");
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 1234;
 
 const crypto = require('crypto');
 var views = 0;
