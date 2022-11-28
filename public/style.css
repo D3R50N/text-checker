@@ -55,7 +55,9 @@
     padding: 5px;
     text-align: justify;
 }
-
+.content div>div{
+    overflow: scroll;
+}
 /* .content p {
     background-color: white;
     border: 1px solid;

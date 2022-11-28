@@ -11,13 +11,13 @@
     <div class="wrapper">
       <div class="container">
         <div class="content">
-          <label for="old">Old text</label>
+          <label for="old">Old text (<span id="oct"></span> words)</label>
           <div>
             <textarea name="old" id="old"><%=oldText%></textarea>
           </div>
         </div>
         <div class="content">
-          <label for="new">New text</label>
+          <label for="new">New text (<span id="nct"></span>  words)</label>
           <div>
             <textarea name="new" id="new"><%=newText%></textarea>
           </div>
@@ -46,6 +46,7 @@
         <a href="https://github.com/D3R50N" target="_blank">
           <img src="logo.png" alt="" />
           <div>MaxDev. - 2022</div>
+          <div style="margin-left: 5px"> | Views since update : <%=views%></div>
         </a>
       </p>
     </footer>

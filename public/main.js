@@ -7,6 +7,21 @@ const newresultText = document.getElementById('newresult');
 const oldresultText = document.getElementById('oldresult');
 const hintText = document.getElementById('hint');
 
+const oct = document.getElementById('oct');
+const nct = document.getElementById('nct');
+
+oct.innerText = oldText.value.trim() == "" ? 0: oldText.value.trim().split(" ").length;
+nct.innerText = newText.value.trim() == "" ? 0 : newText.value.trim().split(" ").length;
+
+oldText.oninput = (e) => {
+    oct.innerText = oldText.value.trim() == "" ? 0 : oldText.value.trim().split(" ").length;
+}
+
+newText.oninput = (e) => {
+    nct.innerText = newText.value.trim() == "" ? 0 : newText.value.trim().split(" ").length;
+}
+
+
 btnCheck.addEventListener('click', () => {
    
     const oldTextValue = String(oldText.value);
