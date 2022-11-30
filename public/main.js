@@ -40,8 +40,8 @@ btnCheck.addEventListener('click', () => {
 
         btnCheck.innerText = "Check difference";
 
-        document.getElementById("oldlabel").innerHTML = ` Old text(<span id="oct">${oldText.value.trim() == "" ? 0 : oldText.value.trim().split(" ").length}</span> words)`; 
-        document.getElementById("newlabel").innerHTML = ` New text(<span id="nct">${newText.value.trim() == "" ? 0 : newText.value.trim().split(" ").length}</span> words)`;
+        document.getElementById("oldlabel").innerHTML = ` Old text (<span id="oct">${oldText.value.trim() == "" ? 0 : oldText.value.trim().split(" ").length}</span> words)`; 
+        document.getElementById("newlabel").innerHTML = ` New text (<span id="nct">${newText.value.trim() == "" ? 0 : newText.value.trim().split(" ").length}</span> words)`;
 
         return;
     }
