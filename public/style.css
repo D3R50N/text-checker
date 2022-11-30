@@ -19,11 +19,11 @@
 }
 
 .content {
-    background-color: #0002;
+    background-color: #0000;
     padding-top: 10px;
     padding-bottom: 20px;
     margin: 10px;
-    width: 50%;
+    width: 48%;
 }
 
 .content label {
@@ -38,7 +38,7 @@
     display: block;
     position: relative;
 
-    width: 97%;
+    /* width: 97%; */
     height: 400px;
 }
 
@@ -53,11 +53,12 @@
     background-color: white;
     border: 1px solid;
     padding: 5px;
-    text-align: justify;
-}
-.content div>div{
+    text-align: start;
+    overflow-wrap: break-word;
     overflow-y: scroll;
 }
+
+
 /* .content p {
     background-color: white;
     border: 1px solid;
@@ -178,11 +179,13 @@ footer a {
     background-color: #16161D;
     color: white;
 }
-.linebrk{
+
+.linebrk {
     margin: 0;
 }
-#hint{
+
+#hint {
     text-align: center;
     padding: 10px;
-    color:#0007;
+    color: #0007;
 }
