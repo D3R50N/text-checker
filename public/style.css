@@ -181,3 +181,8 @@ footer a {
 .linebrk{
     margin: 0;
 }
+#hint{
+    text-align: center;
+    padding: 10px;
+    color:#0007;
+}
