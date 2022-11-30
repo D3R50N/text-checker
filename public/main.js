@@ -13,6 +13,25 @@ const nct = document.getElementById('nct');
 oldText.innerHTML = localStorage.getItem("oldText");
 newText.innerHTML = localStorage.getItem("newText");
 
+oldText.onscroll = (e) => {
+    if(oldText.value.length> newText.value.length)
+    newText.scrollTop = oldText.scrollTop;
+}
+
+newText.onscroll = (e) => {
+    if(newText.value.length> oldText.value.length)
+    oldText.scrollTop = newText.scrollTop;
+}
+
+oldresultText.onscroll = (e) => {
+    if (oldText.value.length > newText.value.length)
+        newresultText.scrollTop = oldresultText.scrollTop;
+}
+
+newresultText.onscroll = (e) => {
+    if (newText.value.length > oldText.value.length)
+        oldresultText.scrollTop = newresultText.scrollTop;
+}
 
 oct.innerText = oldText.value.trim() == "" ? 0 : oldText.value.trim().split(" ").length;
 nct.innerText = newText.value.trim() == "" ? 0 : newText.value.trim().split(" ").length;
