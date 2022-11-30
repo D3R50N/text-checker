@@ -56,7 +56,7 @@
     text-align: justify;
 }
 .content div>div{
-    overflow: scroll;
+    overflow-y: scroll;
 }
 /* .content p {
     background-color: white;
