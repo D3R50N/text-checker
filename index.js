@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const { log } = require("console");
+const fs = require('fs');
 const app = express();
 const PORT = process.env.PORT || 1234;
 
@@ -13,7 +14,15 @@ var views = 0;
 var now = new Date();
 var update_date = now.getDate() + "/" + now.getMonth()+"/"+now.getFullYear()+" at "+now.getHours()+":"+now.getMinutes();
 // log(crypto.randomUUID())
-
+fs.readFile('db/update_date.txt', 'utf8', function (err, data) {
+    if (err) {
+        fs.writeFileSync('db/update_date.txt', update_date);
+    }
+    else {
+        update_date = data; 
+        // fs.writeFileSync('db/update_date.txt', update_date.toString());
+    }
+});
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -25,8 +34,18 @@ app.listen(PORT, () => {
 });
 
 app.get("/", (req, res) => {
-    views++;
-    res.render("index", { oldText: jwt.decode(req.cookies.oldText) || "", newText: jwt.decode(req.cookies.newText) || "", views, update_date });
+    fs.readFile('db/views.txt', 'utf8', function (err, data) {
+        if (err) {
+            fs.writeFileSync('db/views.txt', "1");
+        }
+        else {
+            views = parseInt(data);
+            views++;
+            fs.writeFileSync('db/views.txt', views.toString());
+        }
+        return res.render("index", { oldText: jwt.decode(req.cookies.oldText) || "", newText: jwt.decode(req.cookies.newText) || "", views, update_date });
+
+    });
 
 });
 
