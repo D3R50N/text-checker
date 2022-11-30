@@ -13,13 +13,13 @@
     <div class="wrapper">
       <div class="container">
         <div class="content">
-          <label for="old">Old text (<span id="oct"></span> words)</label>
+          <label for="old" id="oldlabel">Old text (<span id="oct"></span> words)</label>
           <div>
             <textarea name="old" id="old"></textarea>
           </div>
         </div>
         <div class="content">
-          <label for="new">New text (<span id="nct"></span> words)</label>
+          <label for="new" id="newlabel">New text (<span id="nct"></span> words)</label>
           <div>
             <textarea name="new" id="new"></textarea>
           </div>
@@ -34,6 +34,9 @@
       <div id="newresult"></div>
     </div>
 
+    <div id="hint">
+      
+    </div>
     <div class="container">
       <div class="alert">
         <p id="alert-text">
@@ -44,7 +47,7 @@
     </div>
 
     <footer>
-      <p id="hint">
+      <p>
         <a href="https://github.com/D3R50N" target="_blank">
           <img src="logo.png" alt="" />
           <div>MaxDev. - 2022</div>

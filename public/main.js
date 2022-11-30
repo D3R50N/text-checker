@@ -10,11 +10,11 @@ const hintText = document.getElementById('hint');
 const oct = document.getElementById('oct');
 const nct = document.getElementById('nct');
 
-oldText.innerHTML= localStorage.getItem("oldText");
-newText.innerHTML= localStorage.getItem("newText");
+oldText.innerHTML = localStorage.getItem("oldText");
+newText.innerHTML = localStorage.getItem("newText");
 
 
-oct.innerText = oldText.value.trim() == "" ? 0: oldText.value.trim().split(" ").length;
+oct.innerText = oldText.value.trim() == "" ? 0 : oldText.value.trim().split(" ").length;
 nct.innerText = newText.value.trim() == "" ? 0 : newText.value.trim().split(" ").length;
 
 oldText.oninput = (e) => {
@@ -27,7 +27,7 @@ newText.oninput = (e) => {
 
 
 btnCheck.addEventListener('click', () => {
-   
+
     const oldTextValue = String(oldText.value);
     const newTextValue = String(newText.value);
 
@@ -40,45 +40,73 @@ btnCheck.addEventListener('click', () => {
 
         btnCheck.innerText = "Check difference";
 
+        document.getElementById("oldlabel").innerHTML = ` Old text(<span id="oct">${oldText.value.trim() == "" ? 0 : oldText.value.trim().split(" ").length}</span> words)`; 
+        document.getElementById("newlabel").innerHTML = ` New text(<span id="nct">${newText.value.trim() == "" ? 0 : newText.value.trim().split(" ").length}</span> words)`;
+
         return;
     }
-
-
-    const result = checkAdded(oldTextValue, newTextValue);
-    const removedresult = checkRemoved(oldTextValue, newTextValue);
-    
     oldresultText.innerHTML = "";
     newresultText.innerHTML = "";
- 
-    splitter(newTextValue).forEach((word, index) => {
-        const span = document.createElement("span");
-        span.innerHTML = word + " ";
-        if (result.indexes.indexOf(index) !== -1) {
-            span.classList.add("added");
-        }
-        newresultText.appendChild(span);
-    });
 
-    splitter(oldTextValue).forEach((word, index) => {
-        const span = document.createElement("span");
-        span.innerHTML = word + " ";
-        if (removedresult.indexes.indexOf(index) !== -1) {
-            span.classList.add("removed");
-        }
-        oldresultText.appendChild(span);
-    });
+    var removed_count = 0;
+    var added_count = 0;
+
+
+    oldTextValue.split('\n').forEach((line, line_index) => {
+        const newLine = newTextValue.split("\n")[Math.min(line_index, newTextValue.split("\n").length - 1)];
+
+        const result = checkAdded(line, newLine);
+        const removedresult = checkRemoved(line, newLine);
+
+
+
+        const n_div = document.createElement('p');
+        const o_div = document.createElement('p');
+
+        n_div.classList.add("linebrk");
+        o_div.classList.add("linebrk");
+
+        splitter(newLine).forEach((word, index) => {
+            const span = document.createElement("span");
+            span.innerHTML = word + "&nbsp";
+            if (result.indexes.indexOf(index) !== -1) {
+                span.classList.add("added");
+                added_count++;
+            }
+            n_div.appendChild(span);
+        });
+        if (newLine.trim().length == 0) n_div.appendChild(document.createElement("br"))
+        newresultText.appendChild(n_div);
+
+
+
+        splitter(line).forEach((word, index) => {
+
+            const span = document.createElement("span");
+            span.innerHTML = word + "&nbsp";
+
+            if (removedresult.indexes.indexOf(index) !== -1) {
+                span.classList.add("removed");
+                removed_count++;
+            }
+            o_div.appendChild(span);
+        });
+        if (line.trim().length == 0) o_div.appendChild(document.createElement("br"))
+        oldresultText.appendChild(o_div);
+    })
+
+
+
 
     oldText.parentNode.appendChild(oldresultText);
     oldText.parentNode.removeChild(oldText);
 
     newText.parentNode.appendChild(newresultText);
     newText.parentNode.removeChild(newText);
-    // hintText.innerHTML = `
-    //     <p>Added: ${result.newresult.join(' ; ')}</p>
-    //     <p>Indexes: ${result.indexes.join(', ')}</p>
-    //     <p>Removed: ${removedresult.oldresult.join(' ; ')}</p>
-    //     <p>Indexes: ${removedresult.indexes.join(', ')}</p>
-    // `;
+    // Old text(<span id="oct"></span> words)
+    document.getElementById("oldlabel").innerHTML = "Removed (<span id='oct'>" + removed_count + "</span> words)";
+    document.getElementById("newlabel").innerHTML = "Added (<span id='nct'>" + added_count + "</span> words)";
+
 
     btnCheck.innerText = "Return back";
 });
@@ -89,7 +117,7 @@ if (!navigator.cookieEnabled) {
 }
 btnalert.onclick = () => {
     document.querySelector(".alert").style.display = "none";
- };
+};
 
 function save() {
     const oldTextValue = String(oldText.value).trim();
@@ -136,5 +164,7 @@ function checkRemoved(oldText = "", newText = "") {
 
 
 function splitter(word) {
-    return word.split(' ').join("####").split("\n").join("####").split("####");
+
+    return word.split(' ');
+    // return word.split(' ').join("####").split("\n").join("####").split("####");
 }

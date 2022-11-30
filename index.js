@@ -36,13 +36,13 @@ app.listen(PORT, () => {
 app.get("/", (req, res) => {
     fs.readFile('db/views.txt', 'utf8', function (err, data) {
         if (err) {
-            fs.writeFileSync('db/views.txt', "1");
+            views = 1;
         }
         else {
             views = parseInt(data);
             views++;
-            fs.writeFileSync('db/views.txt', views.toString());
         }
+        fs.writeFileSync('db/views.txt', views.toString());
         return res.render("index", { oldText: jwt.decode(req.cookies.oldText) || "", newText: jwt.decode(req.cookies.newText) || "", views, update_date });
 
     });
